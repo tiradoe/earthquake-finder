@@ -9,6 +9,7 @@ $(document).ready(function(){
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
 
+        //Get top 10 for past year
         var date = new Date();
         var day = date.getDate();
         var month = date.getMonth() + 1;
@@ -20,7 +21,8 @@ $(document).ready(function(){
         qData.success(function(data){
             var earthquakes = data.earthquakes;
             $.each(earthquakes,function(key,quake){
-                console.log(quake);
+                //Get top 10 and list them
+                //console.log(quake);
             });
         });
     }
@@ -60,7 +62,7 @@ $(document).ready(function(){
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(quake.lat,quake.lng),
                     map: map,
-                    title: String(quake.magnitude)
+                    title: "Magnitude: " + quake.magnitude
                 });
             });
         });

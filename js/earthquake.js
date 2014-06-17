@@ -4,7 +4,7 @@ $(document).ready(function(){
         //Start with world map
         var mapOptions = {
           center: new google.maps.LatLng(0, 0),
-          zoom: 1
+          zoom: 2
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);

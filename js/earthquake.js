@@ -48,11 +48,13 @@ $(document).ready(function(){
             zoom: 4
         });
 
-        var boundaries = map.getBounds();
-        var north = boundaries.Ba.j;
-        var south = boundaries.Ba.k;
-        var east = boundaries.qa.k;
-        var west = boundaries.qa.j;
+        var northeast = map.getBounds().getNorthEast();
+        var southwest = map.getBounds().getSouthWest();
+       
+        var north = northeast.lat();
+        var south = southwest.lat();
+        var east = northeast.lng();
+        var west = southwest.lng();
 
         var qData = getEarthquakes(north,south,east,west);
 

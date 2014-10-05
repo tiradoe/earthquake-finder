@@ -16,14 +16,10 @@ $(document).ready(function(){
 
     var coordinates  = [];
 
-    $('#submit').on('click', function(){
-        getUpdatedMapInfo()
-    });
-
     $('#search-field').on('submit', function(){
-        getUpdatedMapInfo()
+        getUpdatedMapInfo();
         return false;
-    })
+    });
 
 
     function getMapFromGoogle(location){
@@ -49,27 +45,24 @@ $(document).ready(function(){
     }
 
     function getUpdatedMapInfo(){
-
         var location = $('#location-field').val();
         var gdata = getMapFromGoogle(location);
 
         gdata.success(function(data){
             try{
-                coordinates['lat'] = data.results[0].geometry.location.lat
-                coordinates['long'] = data.results[0].geometry.location.lng 
-            }
+                coordinates['lat'] = data.results[0].geometry.location.lat;
+                coordinates['long'] = data.results[0].geometry.location.lng;
+            } 
             catch(error){
                 alert('Location not found.');
                 return false;
             }
-            
 
-            updateDisplay(coordinates['lat'], coordinates['long'])
+            updateDisplay(coordinates['lat'], coordinates['long']);
         });
     }
 
     function updateDisplay(lat,long){
-        //Set new map coordinates to location entered
         var map = new google.maps.Map(document.getElementById("map-canvas"),{
             center: new google.maps.LatLng(coordinates.lat,coordinates.long),
             zoom: 4

@@ -24,7 +24,8 @@ $(document).ready(function(){
 
     function getMapFromGoogle(location){
         var key = "AIzaSyBBKz8YYLhryH5AISybvVh1EqC0u6HK6oU"
-        var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&sensor=true&key=" + key;
+        var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + 
+		  "&sensor=true&key=" + key;
 
        return $.ajax({
             url: url,
@@ -35,7 +36,12 @@ $(document).ready(function(){
 
     function getEarthquakes(north,south,east,west,range){
         var date = range == null ? '': '&date=' + range;
-        var url = 'http://api.geonames.org/earthquakesJSON?north=' + north + '&south=' + south + '&east=' + east + '&west=' + west + date + '&username=tiradoe'
+        var url = 'http://api.geonames.org/earthquakesJSON?north=' + north + 
+		  '&south=' + south + 
+		  '&east=' + east + 
+		  '&west=' + west + 
+		  date + 
+		  '&username=tiradoe'
 
         return $.ajax({
             url: url,
